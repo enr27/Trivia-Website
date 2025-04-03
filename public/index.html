@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main">
+        <header class="header">
+            <a href="#" class="logo">Trivia Website</a>
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Leaderboards</a>
+            </nav>
+        </header>
+        
+        <section class="home">
+            <div class="home-content">
+                <h1>Trivia Game</h1>
+                <p>Select your options and click Play</p>
+                
+                <div id="gameSettings">
+                    <label for="numQuestions">Number of Questions:</label>
+                    <input type="number" id="numQuestions" min="1" max="50" value="10">
+
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="9">General Knowledge</option>
+                        <option value="17">Science & Nature</option>
+                        <option value="23">History</option>
+                    </select>
+
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                
+                <button class="start-button" id="startGame">Play</button>
+            </div>
+        </section>
+
+        <section id="gameArea" style="display:none;">
+            <div id="timer">Time: 30 seconds</div>
+            <h2 id="question">Question will appear here</h2>
+            <div id="options">Options will appear here</div>
+            <p id="score">Score: 0</p>
+        </section>
+
+        <section id="endGameArea" style="display:none;">
+            <h2>Game Over!</h2>
+            <p id="winner">The winner is...</p>
+            <button id="resetGame">Play Again</button>
+        </section>
+    </main>
+
+    <div id="playModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Join or Create a Room</h2>
+            <label for="modalRoomCode">Enter Room Code or leave blank to create a new room:</label>
+            <input type="text" id="modalRoomCode" placeholder="Room Code" autocomplete="off">
+            <label for="modalPlayerName">Enter Your Name:</label>
+            <input type="text" id="modalPlayerName" placeholder="Name" autocomplete="off">
+            <div style="margin-top: 20px;">
+                <button id="modalExitButton" class="exit-button">Exit</button> 
+                <button id="modalPlayButton">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="roomCreatedModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Room Created!</h2>
+            <p id="roomCodeDisplay">Your room code is: <strong></strong></p>
+            <button id="roomCreatedContinueButton">Continue</button>
+        </div>
+    </div>    
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
